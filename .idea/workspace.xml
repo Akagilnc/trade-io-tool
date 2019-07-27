@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03b74179-bd88-4a9f-a8ef-a45fc6e33075" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/io_tool/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/io_tool/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/io_tool/product/change_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/snippets/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/snippets/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade_io_tool/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/trade_io_tool/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade_io_tool/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/trade_io_tool/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,14 +93,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/io_tool/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="225">
+              <caret line="37" column="7" lean-forward="true" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -162,6 +156,7 @@
         <option value="$PROJECT_DIR$/io_tool/models.py" />
         <option value="$PROJECT_DIR$/trade_io_tool/settings.py" />
         <option value="$PROJECT_DIR$/io_tool/views.py" />
+        <option value="$PROJECT_DIR$/Dockerfile" />
       </list>
     </option>
   </component>
@@ -309,24 +304,25 @@
       <workItem from="1564030894737" duration="40000" />
       <workItem from="1564030954789" duration="270000" />
       <workItem from="1564031249214" duration="721000" />
-      <workItem from="1564032536916" duration="17476000" />
+      <workItem from="1564032536916" duration="17684000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17476000" />
+    <option name="totallyTimeSpent" value="17684000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32914925" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32914925" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32914925" />
@@ -558,11 +554,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/io_tool/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="225">
+          <caret line="37" column="7" lean-forward="true" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
         </state>
       </provider>
     </entry>
