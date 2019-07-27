@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'io_tool.apps.IoToolConfig',
     'snippets.apps.SnippetsConfig'
 ]
@@ -47,10 +48,21 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_WHITELIST = (
+#     '*',
+# )
+# CORS_ORIGIN_REGEX_WHITELIST = (
+#     '*',
+# )
 
 ROOT_URLCONF = 'trade_io_tool.urls'
 
@@ -121,8 +133,35 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
+MEDIA_URL = '/files/'
 
-REST_FRAMEWORK= {
+REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20
 }
+
+# 使用OSS存储文件
+DEFAULT_FILE_STORAGE = 'aliyun_oss2_storage.backends.AliyunMediaStorage'
+
+# 配置OSS信息
+ACCESS_KEY_ID = "LTAIul3pXQb8o18F"
+ACCESS_KEY_SECRET = "vnduifrzJ366kM3I8mnkwt8F0T2tjK"
+PREFIX_URL = 'https://'
+END_POINT = "oss-cn-chengdu.aliyuncs.com"  # OSS存储节点，基本上只要改城市
+BUCKET_NAME = "io-tool-storage"
+BUCKET_ACL_TYPE = "private"  # private, public-read, public-read-write
+
+# mediafile将自动上传
+DEFAULT_FILE_STORAGE = 'aliyun_oss2_storage.backends.AliyunMediaStorage'
+
+# # 设置上传的静态文件，需要上传静态文件的记得添加此项
+# STATICFILES_STORAGE = 'aliyun_oss2_storage.backends.AliyunStaticStorage'
+
+"""
+PREFIX_URL配置一定要添加，否则可能会出现
+{'status': 403, 'x-oss-request-id': '', 'details': {}}
+的错误
+# """
+
+

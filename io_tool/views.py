@@ -1,10 +1,39 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from io_tool.serializers import UserSerializer, GroupSerializer
+from io_tool.models import Product
+from rest_framework import viewsets, permissions
+from io_tool.serializers import UserSerializer, GroupSerializer, ProductSerializer
+from .forms import UploadFileForm
+from django.http import HttpResponseRedirect
 
 
-# Create your views here.
+def handle_uploaded_file(f):
+    with open('./name.jpg', 'wb+') as destination:
+        for chunk in f.chunks():
+            print('handling pic')
+            destination.write(chunk)
+
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['photos_multiple'])
+            return HttpResponseRedirect('/success/url/')
+    else:
+        form = UploadFileForm()
+    return render(request, "upload.html", {'form': form})
+
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoints that allows users to be viewed or edited

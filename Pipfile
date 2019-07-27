@@ -11,6 +11,8 @@ django = "*"
 djangorestframework = "*"
 pillow = "*"
 pygments = "*"
+django-aliyun-oss2-storage = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.7"

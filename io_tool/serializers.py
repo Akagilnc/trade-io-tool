@@ -1,5 +1,14 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
+from io_tool.models import Product  # , Image
+
+
+class ProductSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = Product
+        fields = ('__all__')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
