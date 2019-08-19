@@ -7,6 +7,7 @@ RUN apt-get update \
 
 WORKDIR /usr/src/app
 COPY Pipfile.lock .
+COPY Pipfile .
 RUN pip install pipenv \
   && pipenv install --deploy --system --ignore-pipfile
 
