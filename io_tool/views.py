@@ -5,6 +5,7 @@ from rest_framework import viewsets, permissions
 from io_tool.serializers import UserSerializer, GroupSerializer, ProductSerializer
 from .forms import UploadFileForm
 from django.http import HttpResponseRedirect
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 def handle_uploaded_file(f):
@@ -29,6 +30,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['title_cn', 'title_en', 'SKU', 'owner']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

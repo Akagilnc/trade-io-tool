@@ -6,9 +6,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
-COPY . .
+COPY Pipfile.lock .
 RUN pip install pipenv \
   && pipenv install --deploy --system --ignore-pipfile
+
+COPY . .
 
 RUN python manage.py makemigrations
 RUN python manage.py migrate
