@@ -14,6 +14,7 @@ pygments = "*"
 django-aliyun-oss2-storage = "*"
 django-cors-headers = "*"
 django-filter = "*"
+django-rest-auth = "*"
 
 [requires]
 python_version = "3.7"

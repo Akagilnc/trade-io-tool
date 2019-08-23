@@ -3,7 +3,7 @@ from rest_framework import serializers
 from io_tool.models import Product  # , Image
 
 
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:

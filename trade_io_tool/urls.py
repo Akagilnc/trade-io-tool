@@ -20,19 +20,17 @@ from io_tool import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
-    # path('', include(router.urls)),
-    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('snippets/', include('snippets.urls')),
+    # path('snippets/', include('snippets.urls')),
     path('io_tool/', include('io_tool.urls')),
-    path('api-auth/', include('rest_framework.urls'))
+    # path('api-auth/', include('rest_framework.urls')),
+    path('rest-auth/', include('rest_auth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
