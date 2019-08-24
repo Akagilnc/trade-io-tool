@@ -35,8 +35,9 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticated]
-    filter_backends = [DjangoFilterBackend]
-    filter_fields = ['title_cn', 'title_en', 'SKU', 'owner', 'status']
+    filter_backends = [filters.SearchFilter]
+    # filter_fields = ['title_cn', 'title_en', 'SKU', 'owner', 'status']
+    search_fields = ['title_cn', 'title_en', 'status']
 
     @action(detail=True, methods=['post'], name='Commit Product to UI', url_path='commit')
     def commit_product_ui(self, request, pk=None):

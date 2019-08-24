@@ -8,5 +8,5 @@ router.register(r'products', views.ProductViewSet, basename='products')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path(r'get-current-user', views.current_user)
+    path(r'get-current-user/', views.current_user)
 ]
