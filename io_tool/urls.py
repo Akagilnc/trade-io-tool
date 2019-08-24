@@ -4,7 +4,8 @@ from io_tool import views
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
-router.register(r'products', views.ProductViewSet, basename='products')
+router.register(r'products', views.ProductViewSet, basename='product')
+router.register(r'catalogs', views.CatalogViewSet, basename='catalog')
 
 urlpatterns = [
     path('', include(router.urls)),

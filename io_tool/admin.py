@@ -1,7 +1,7 @@
 from django.contrib import admin
 # from io_tool.models import Image
 from django import forms
-from .models import Product
+from .models import Product, Catalog
 
 
 # class ImageInline(admin.StackedInline):
@@ -11,14 +11,11 @@ from .models import Product
 
 class ProductAdmin(admin.ModelAdmin):
     pass
-    # inlines = [ImageInline]
 
-    # def save_model(self, request, obj, form, change):
-    #     obj.save()
-    #
-    #     for afile in request.FILES.getlist('photos_multiple'):
-    #         print("saving pics")
-    #         obj.images.create(file=afile)
+
+class CatalogAdmin(admin.ModelAdmin):
+    pass
 
 
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Catalog, CatalogAdmin)

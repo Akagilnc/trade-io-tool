@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_filters',
-    'io_tool.apps.IoToolConfig',
-    'snippets.apps.SnippetsConfig'
+    'io_tool.apps.IoToolConfig'
 ]
 
 MIDDLEWARE = [

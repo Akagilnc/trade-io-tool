@@ -1,14 +1,11 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import filters
-from io_tool.models import Product
+from io_tool.models import Product, Catalog
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import api_view
-from io_tool.serializers import UserSerializer, GroupSerializer, ProductSerializer
-from django.http import HttpResponseRedirect
-from django_filters.rest_framework import DjangoFilterBackend
+from io_tool.serializers import UserSerializer, GroupSerializer, ProductSerializer, CatalogSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
-import json
 
 
 @api_view(['GET'])
@@ -21,17 +18,35 @@ def current_user(request):
     })
 
 
+class CatalogViewSet(viewsets.ModelViewSet):
+    """
+    API endpoints that allows users to be viewed or edited
+    """
+    queryset = Catalog.objects.all().order_by('created_time')
+    serializer_class = CatalogSerializer
+    filter_backends = [filters.SearchFilter]
+    # filter_fields = ['title_cn', 'title_en', 'SKU', 'owner', 'status']
+    search_fields = ['name']
+
+
 class ProductViewSet(viewsets.ModelViewSet):
+
     def get_queryset(self):
+        catalog = self.request.query_params.get('catalog')
         group_names = self.request.user.groups.values_list('name', flat=True)
         if group_names:
             group_name = group_names[0]
         else:
             group_name = None
         print(group_name)
-        if group_name.lower() == 'dev':
-            return Product.objects.filter(owner=self.request.user).order_by('created_time')
-        return Product.objects.all().order_by('created_time')
+        if group_name and group_name.lower() == 'dev':
+            result = Product.objects.filter(owner=self.request.user).order_by('created_time')
+        else:
+            result = Product.objects.all().order_by('created_time')
+
+        if catalog:
+            return result.filter(catalog=catalog)
+        return result
 
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -85,4 +100,3 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-
