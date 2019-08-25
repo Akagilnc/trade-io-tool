@@ -48,15 +48,7 @@ class Product(models.Model):
     pic_6th = models.ImageField(verbose_name='图片6', upload_to='images', blank=True, null=True)
     pic_7th = models.ImageField(verbose_name='图片7', upload_to='images', blank=True, null=True)
     pic_8th = models.ImageField(verbose_name='图片8', upload_to='images', blank=True, null=True)
-    # pic_main = models.CharField(verbose_name='主图地址', max_length=500)
-    # pic_1st = models.CharField(verbose_name='图片1地址', max_length=500)
-    # pic_2nd = models.CharField(verbose_name='图片2地址', max_length=500)
-    # pic_3rd = models.CharField(verbose_name='图片3地址', max_length=500)
-    # pic_4th = models.CharField(verbose_name='图片4地址', max_length=500)
-    # pic_5th = models.CharField(verbose_name='图片5地址', max_length=500)
-    # pic_6th = models.CharField(verbose_name='图片6地址', max_length=500)
-    # pic_7th = models.CharField(verbose_name='图片7地址', max_length=500)
-    # pic_8th = models.CharField(verbose_name='图片8地址', max_length=500)
+
     product_weight = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='产品重量(克)',
                                          validators=[MinValueValidator(Decimal('0.01'))])
     package_weight = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='包装重量(克)',
@@ -74,4 +66,4 @@ class Product(models.Model):
     product_remarks = models.CharField(max_length=500, verbose_name='备注', blank=True, null=True)
 
     def __str__(self):
-        return "{} \n {}".format(self.title_cn, self.title_en)
+        return "{}  {}".format(self.title_cn, self.title_en)

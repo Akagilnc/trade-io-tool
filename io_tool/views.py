@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view
 from io_tool.serializers import UserSerializer, GroupSerializer, ProductSerializer, CatalogSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django.db.models import Q
 
 
 @api_view(['GET'])
@@ -35,17 +36,25 @@ class ProductViewSet(viewsets.ModelViewSet):
         catalog = self.request.query_params.get('catalog')
         group_names = self.request.user.groups.values_list('name', flat=True)
         if group_names:
-            group_name = group_names[0]
+            group_name = group_names[0].lower()
         else:
             group_name = None
         print(group_name)
-        if group_name and group_name.lower() == 'dev':
+        if group_name and group_name == 'dev':
             result = Product.objects.filter(owner=self.request.user).order_by('created_time')
         else:
             result = Product.objects.all().order_by('created_time')
 
+        if group_name == 'dev':
+            result = result.filter(Q(status='待提交') | Q(status='审核失败'))
+        if group_name == 'ui':
+            result = result.filter(Q(status='已提交') | Q(status='审核失败'))
+        if group_name == 'sell':
+            result = result.filter(status='已上线')
+
         if catalog:
             return result.filter(catalog=catalog)
+
         return result
 
     serializer_class = ProductSerializer

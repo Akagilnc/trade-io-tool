@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03b74179-bd88-4a9f-a8ef-a45fc6e33075" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/migrations/0002_product_status.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/io_tool/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io_tool/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/io_tool/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/io_tool/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/snippets/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/snippets/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/snippets/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade_io_tool/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/trade_io_tool/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/io_tool/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="20" column="63" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="63" />
+            <state relative-caret-position="119">
+              <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -50,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/io_tool/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+            <state relative-caret-position="267">
+              <caret line="51" column="32" lean-forward="true" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -62,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trade_io_tool/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+            <state relative-caret-position="173">
+              <caret line="135" column="19" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -161,10 +152,10 @@
         <option value="$PROJECT_DIR$/trade_io_tool/urls.py" />
         <option value="$PROJECT_DIR$/io_tool/admin.py" />
         <option value="$PROJECT_DIR$/snippets/admin.py" />
-        <option value="$PROJECT_DIR$/trade_io_tool/settings.py" />
         <option value="$PROJECT_DIR$/io_tool/urls.py" />
-        <option value="$PROJECT_DIR$/io_tool/models.py" />
         <option value="$PROJECT_DIR$/io_tool/serializers.py" />
+        <option value="$PROJECT_DIR$/io_tool/models.py" />
+        <option value="$PROJECT_DIR$/trade_io_tool/settings.py" />
         <option value="$PROJECT_DIR$/io_tool/views.py" />
       </list>
     </option>
@@ -287,18 +278,18 @@
       <workItem from="1564666651605" duration="599000" />
       <workItem from="1565443772514" duration="598000" />
       <workItem from="1566184499424" duration="19449000" />
-      <workItem from="1566519612957" duration="23642000" />
+      <workItem from="1566519612957" duration="25295000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67180000" />
+    <option name="totallyTimeSpent" value="68833000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26862463" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26862463" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -312,7 +303,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32914925" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32914925" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -552,13 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trade_io_tool/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trade_io_tool/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -579,16 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/io_tool/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="20" column="63" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/io_tool/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -599,10 +573,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/io_tool/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trade_io_tool/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="135" column="19" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/io_tool/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+        <state relative-caret-position="267">
+          <caret line="51" column="32" lean-forward="true" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
