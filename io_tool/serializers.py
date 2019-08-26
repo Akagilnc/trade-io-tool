@@ -6,7 +6,7 @@ from io_tool.models import Product, Catalog
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     # catalog = serializers.HyperlinkedRelatedField(many=False, view_name='catalog-detail', read_only=True)
-
+    id = serializers.IntegerField(read_only=True)
     class Meta:
         model = Product
         fields = ('__all__')
@@ -17,7 +17,7 @@ class CatalogSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Catalog
-        fields = ['name', 'url', 'products']
+        fields = ['id', 'name', 'url', 'products']
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

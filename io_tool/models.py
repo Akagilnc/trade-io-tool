@@ -20,7 +20,7 @@ class Product(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     catalog = models.ForeignKey(Catalog, related_name='products', on_delete=models.CASCADE, verbose_name='类别', null=True)
     status = models.CharField(max_length=50, default='待提交')
-    SKU = models.CharField(max_length=100, primary_key=True)
+    SKU = models.CharField(max_length=100)
     owner = models.ForeignKey('auth.User', related_name='products', on_delete=models.CASCADE, verbose_name='开发人员')
     # owner = models.CharField(max_length=50, verbose_name='开发人员')
     title_en = models.CharField(max_length=200, verbose_name='标题英文')
