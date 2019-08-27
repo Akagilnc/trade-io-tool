@@ -23,7 +23,7 @@ class CatalogViewSet(viewsets.ModelViewSet):
     """
     API endpoints that allows users to be viewed or edited
     """
-    queryset = Catalog.objects.all().order_by('created_time')
+    queryset = Catalog.objects.all().order_by('-created_time')
     serializer_class = CatalogSerializer
     pagination_class = None
     filter_backends = [filters.SearchFilter]
@@ -42,9 +42,9 @@ class ProductViewSet(viewsets.ModelViewSet):
             group_name = None
         print(group_name)
         if group_name and group_name == 'dev':
-            result = Product.objects.filter(owner=self.request.user).order_by('created_time')
+            result = Product.objects.filter(owner=self.request.user).order_by('-created_time')
         else:
-            result = Product.objects.all().order_by('created_time')
+            result = Product.objects.all().order_by('-created_time')
 
         if group_name == 'dev':
             result = result.filter(Q(status='待提交') | Q(status='审核失败'))
