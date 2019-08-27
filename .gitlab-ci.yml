@@ -15,7 +15,7 @@ build:
   - echo "Building the app"
   - docker build akagilnc/trade-io-tool .
 push:
-  stage: deploy
+  stage: push
   only:
   - master
   script:
