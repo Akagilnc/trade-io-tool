@@ -25,6 +25,7 @@ class CatalogViewSet(viewsets.ModelViewSet):
     """
     queryset = Catalog.objects.all().order_by('created_time')
     serializer_class = CatalogSerializer
+    pagination_class = None
     filter_backends = [filters.SearchFilter]
     # filter_fields = ['title_cn', 'title_en', 'SKU', 'owner', 'status']
     search_fields = ['name']
