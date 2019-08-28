@@ -42,6 +42,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             group_name = None
         print(group_name)
         if group_name and group_name == 'dev':
+            print(self.request.user)
             result = Product.objects.filter(owner=self.request.user).order_by('-created_time')
         else:
             result = Product.objects.all().order_by('-created_time')

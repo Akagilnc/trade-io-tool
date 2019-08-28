@@ -5,7 +5,8 @@ from io_tool.models import Product, Catalog
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    catalog = serializers.StringRelatedField(many=False)
+    catalog = serializers.ModelDurationField(verbose_name='分类')
+    catalog_name = serializers.StringRelatedField(source='catalog')
     id = serializers.IntegerField(read_only=True)
 
 
