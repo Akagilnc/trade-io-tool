@@ -12,6 +12,7 @@ RUN pip install pipenv \
   && pipenv install --deploy --system --ignore-pipfile
 
 COPY . .
+COPY db.sqlite3 /db
 
 RUN python manage.py makemigrations
 RUN python manage.py migrate
