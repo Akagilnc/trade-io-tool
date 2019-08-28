@@ -3,9 +3,8 @@ language: python
 services:
   - docker
 
-
-
 script:
-  - docker build -t akagilnc/trade-io-tool .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker pull akagilnc/trade-io-tool:latest || true
+  - docker build --cache-from akagilnc/trade-io-tool:latest -t akagilnc/trade-io-tool .
   - docker push akagilnc/trade-io-tool
