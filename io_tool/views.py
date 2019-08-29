@@ -35,7 +35,6 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         catalog = self.request.query_params.get('catalog')
-        status = self.request.query_params.get('status')
         group_names = self.request.user.groups.values_list('name', flat=True)
         if group_names:
             group_name = group_names[0].lower()
@@ -56,9 +55,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             result = result.filter(status='已上线')
 
         if catalog:
-            result = result.filter(catalog=catalog)
-        if status:
-            result = result.filter(status=status)
+            return result.filter(catalog=catalog)
 
         return result
 
