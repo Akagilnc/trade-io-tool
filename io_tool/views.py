@@ -57,7 +57,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
         if catalog:
             result = result.filter(catalog=catalog)
-        if status:
+        if status or status != '':
             result = result.filter(status=status)
 
         return result
