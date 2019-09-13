@@ -9,7 +9,6 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     catalog_name = serializers.StringRelatedField(source='catalog')
     id = serializers.IntegerField(read_only=True)
 
-
     class Meta:
         model = Product
         fields = ('__all__')
