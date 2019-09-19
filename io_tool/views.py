@@ -51,7 +51,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         if group_name == 'dev':
             result = result.filter(Q(status='待提交') | Q(status='审核失败'))
         if group_name == 'ui':
-            result = result.filter(Q(status='已提交') | Q(status='审核失败'))
+            result = result.filter(status='审核通过')
         if group_name == 'sell':
             result = result.filter(status='已上线')
 
@@ -68,10 +68,10 @@ class ProductViewSet(viewsets.ModelViewSet):
     # filter_fields = ['title_cn', 'title_en', 'SKU', 'owner', 'status']
     search_fields = ['SKU', 'title_cn', 'title_en', 'keyword', 'status']
 
-    @action(detail=True, methods=['post'], name='Commit Product to UI', url_path='commit')
-    def commit_product_ui(self, request, pk=None):
+    @action(detail=True, methods=['post'], name='Commit Product to UI', url_path='accept')
+    def accept_product_ui(self, request, pk=None):
         product = self.get_object()
-        product.status = '已提交'
+        product.status = '审核通过'
         product.save()
         return Response({'200': '产品已提交UI'})
 
@@ -82,14 +82,14 @@ class ProductViewSet(viewsets.ModelViewSet):
         product.save()
         return Response({'200': '产品已提交审核'})
 
-    @action(detail=True, methods=['post'], name='Accept Product to production', url_path='accept')
-    def accept_product(self, request, pk=None):
+    @action(detail=True, methods=['post'], name='Accept Product to production', url_path='commit')
+    def release_product(self, request, pk=None):
         product = self.get_object()
         product.status = '已上线'
         product.save()
         return Response({'200': '产品上线'})
 
-    @action(detail=True, methods=['post'], name='Reject Product to ui and dev', url_path='reject')
+    @action(detail=True, methods=['post'], name='Reject Product to dev', url_path='reject')
     def reject_product(self, request, pk=None):
         product = self.get_object()
         product.status = '审核失败'

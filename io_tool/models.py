@@ -23,20 +23,20 @@ class Product(models.Model):
     SKU = models.CharField(max_length=100, unique=True)
     owner = models.ForeignKey('auth.User', related_name='products', on_delete=models.CASCADE, verbose_name='开发人员')
     # owner = models.CharField(max_length=50, verbose_name='开发人员')
-    title_en = models.CharField(max_length=200, verbose_name='标题英文')
-    title_cn = models.CharField(max_length=200, verbose_name='标题中文')
-    keyword = models.CharField(max_length=200, verbose_name='产品关键字')
+    title_en = models.CharField(max_length=500, verbose_name='标题英文')
+    title_cn = models.CharField(max_length=500, verbose_name='标题中文')
+    keyword = models.CharField(max_length=500, verbose_name='产品关键字')
     bought_price = models.DecimalField(verbose_name='采购价格', max_digits=9, decimal_places=2,
                                        validators=[MinValueValidator(Decimal('0.01'))])
     sell_price = models.DecimalField(verbose_name='销售价格', max_digits=9, decimal_places=2,
                                      validators=[MinValueValidator(Decimal('0.01'))])
-    color = models.CharField(max_length=100, verbose_name='颜色', blank=True, null=True)
+    color = models.CharField(max_length=200, verbose_name='颜色', blank=True, null=True)
     size = models.CharField(max_length=100, verbose_name='尺寸', blank=True, null=True)
-    style = models.CharField(max_length=100, verbose_name='风格', blank=True, null=True)
+    style = models.CharField(max_length=200, verbose_name='风格', blank=True, null=True)
     amount = models.PositiveIntegerField(verbose_name='数量')
     material = models.CharField(max_length=100, verbose_name='材质', blank=True, null=True)
-    desc = models.CharField(max_length=3000, verbose_name='产品描述', blank=True, null=True)
-    trans_method = models.CharField(max_length=100, verbose_name='运输', blank=True, null=True)
+    desc = models.CharField(max_length=4000, verbose_name='产品描述', blank=True, null=True)
+    trans_method = models.CharField(max_length=200, verbose_name='运输', blank=True, null=True)
     trans_price = models.DecimalField(verbose_name='运费', max_digits=9, decimal_places=2,
                                       validators=[MinValueValidator(Decimal('0.01'))])
     pic_main = models.ImageField(verbose_name='主图', upload_to='images')
@@ -59,10 +59,10 @@ class Product(models.Model):
                                         validators=[MinValueValidator(Decimal('0.01'))], blank=True, null=True)
     product_high = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='产品高(cm)',
                                        validators=[MinValueValidator(Decimal('0.01'))], blank=True, null=True)
-    product_link_1688 = models.CharField(max_length=200, verbose_name='产品1688链接')
-    product_link_ebay = models.CharField(max_length=200, verbose_name='产品ebay链接', blank=True, null=True)
-    product_link_amazon = models.CharField(max_length=200, verbose_name='产品Amazon链接', blank=True, null=True)
-    product_link_speed_sell = models.CharField(max_length=200, verbose_name='产品速卖链接', blank=True, null=True)
+    product_link_1688 = models.CharField(max_length=1400, verbose_name='产品1688链接')
+    product_link_ebay = models.CharField(max_length=1400, verbose_name='产品ebay链接', blank=True, null=True)
+    product_link_amazon = models.CharField(max_length=1400, verbose_name='产品Amazon链接', blank=True, null=True)
+    product_link_speed_sell = models.CharField(max_length=1400, verbose_name='产品速卖链接', blank=True, null=True)
     product_remarks = models.CharField(max_length=3000, verbose_name='备注', blank=True, null=True)
 
     def __str__(self):
