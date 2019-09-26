@@ -36,11 +36,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         catalog = self.request.query_params.get('catalog')
         status = self.request.query_params.get('status')
-        group_names = self.request.user.groups.values_list('name', flat=True)
-        if group_names:
-            group_name = group_names[0].lower()
-        else:
-            group_name = None
+        group_name = self.get_group_name()
         print(group_name)
         if group_name and group_name == 'dev':
             print(self.request.user)
@@ -49,7 +45,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             result = Product.objects.all().order_by('-created_time')
 
         if group_name == 'dev':
-            result = result.filter(Q(status='待提交') | Q(status='审核失败'))
+            result = result.filter(~Q(status='已上线'))
         if group_name == 'ui':
             result = result.filter(status='审核通过')
         if group_name == 'sell':
@@ -58,9 +54,17 @@ class ProductViewSet(viewsets.ModelViewSet):
         if catalog:
             result = result.filter(catalog=catalog)
         if status and status != '':
-            result = result.filter(status=status)
+            if ',' in status:
+                status_list = status.split(',')
+                result = result.filter(Q(status=status_list[0]) | Q(status=status_list[1]))
+            else:
+                result = result.filter(status=status)
 
         return result
+
+    def get_group_name(self):
+        group_names = self.request.user.groups.values_list('name', flat=True)
+        return group_names[0].lower() if group_names else None
 
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -68,26 +72,27 @@ class ProductViewSet(viewsets.ModelViewSet):
     # filter_fields = ['title_cn', 'title_en', 'SKU', 'owner', 'status']
     search_fields = ['SKU', 'title_cn', 'title_en', 'keyword', 'status']
 
-    @action(detail=True, methods=['post'], name='Commit Product to UI', url_path='accept')
-    def accept_product_ui(self, request, pk=None):
-        product = self.get_object()
-        product.status = '审核通过'
-        product.save()
-        return Response({'200': '产品已提交UI'})
-
     @action(detail=True, methods=['post'], name='Commit Product to admin', url_path='review')
     def commit_product_review(self, request, pk=None):
+        group_name = self.get_group_name()
         product = self.get_object()
-        product.status = '待审核'
+        if group_name == 'dev':
+            product.status = '待审核'
+        if group_name == 'ui':
+            product.status = '待终审'
         product.save()
         return Response({'200': '产品已提交审核'})
 
-    @action(detail=True, methods=['post'], name='Accept Product to production', url_path='commit')
-    def release_product(self, request, pk=None):
+    @action(detail=True, methods=['post'], name='Commit Product to UI', url_path='accept')
+    def accept_product_ui(self, request, pk=None):
         product = self.get_object()
-        product.status = '已上线'
+        product_status = product.status
+        if product_status == '待审核':
+            product.status = '审核通过'
+        if product_status == '待终审':
+            product.status = '已上线'
         product.save()
-        return Response({'200': '产品上线'})
+        return Response({'200': '产品{}'.format(product.status)})
 
     @action(detail=True, methods=['post'], name='Reject Product to dev', url_path='reject')
     def reject_product(self, request, pk=None):
