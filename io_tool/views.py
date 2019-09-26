@@ -34,6 +34,8 @@ class CatalogViewSet(viewsets.ModelViewSet):
 class ProductViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
+        price_min = self.request.query_params.get('price_min')
+        price_max = self.request.query_params.get('price_max')
         catalog = self.request.query_params.get('catalog')
         status = self.request.query_params.get('status')
         group_name = self.get_group_name()
@@ -59,6 +61,8 @@ class ProductViewSet(viewsets.ModelViewSet):
                 result = result.filter(Q(status=status_list[0]) | Q(status=status_list[1]))
             else:
                 result = result.filter(status=status)
+        if price_max and price_min:
+            result = result.filter(Q(bought_price__gte=price_min) & Q(bought_price__lte=price_max))
 
         return result
 
