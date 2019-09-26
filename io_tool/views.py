@@ -89,8 +89,10 @@ class ProductViewSet(viewsets.ModelViewSet):
         product_status = product.status
         if product_status == '待审核':
             product.status = '审核通过'
+            product.reviewer_1st = request.user
         if product_status == '待终审':
             product.status = '已上线'
+            product.reviewer_final = request.user
         product.save()
         return Response({'200': '产品{}'.format(product.status)})
 

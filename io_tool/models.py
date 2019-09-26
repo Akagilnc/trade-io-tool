@@ -6,6 +6,7 @@ from django.core.validators import MinValueValidator
 class Catalog(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100)
+
     # product = models.ForeignKey('Product', related_name='product', on_delete=models.CASCADE, verbose_name='商品',
     #                             null=True)
 
@@ -18,10 +19,15 @@ class Catalog(models.Model):
 
 class Product(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
-    catalog = models.ForeignKey(Catalog, related_name='products', on_delete=models.CASCADE, verbose_name='类别', null=True)
+    catalog = models.ForeignKey(Catalog, related_name='products', on_delete=models.CASCADE, verbose_name='类别',
+                                null=True)
     status = models.CharField(max_length=50, default='待提交')
     SKU = models.CharField(max_length=100, unique=True)
     owner = models.ForeignKey('auth.User', related_name='products', on_delete=models.CASCADE, verbose_name='开发人员')
+    reviewer_1st = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='一审人', null=True,
+                                     related_name='reviewed_products')
+    reviewer_final = models.ForeignKey('auth.User', on_delete=models.CASCADE,verbose_name='终审人', null=True,
+                                       related_name='released_products')
     # owner = models.CharField(max_length=50, verbose_name='开发人员')
     title_en = models.CharField(max_length=500, verbose_name='标题英文')
     title_cn = models.CharField(max_length=500, verbose_name='标题中文')
